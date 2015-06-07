@@ -67,7 +67,7 @@ func (er *Response) HasError() bool {
 }
 
 func (er *Response) response(status int, data interface{}) error {
-	er.w.WriteHeader(status)
 	er.w.Header().Set("Content-type", "application/json; charset=utf-8")
+	er.w.WriteHeader(status)
 	return json.NewEncoder(er.w).Encode(data)
 }
